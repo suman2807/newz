@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4"><i class="fa-brands fa-neos"></i>ews Feed <span id="currentDate"></span></h1>
+        <div class="text-center weather">
+            <div id="weatherInfo" class="d-inline" aria-label="Current Weather">Loading weather...</div>
+            <div id="toggleTempUnit" class="d-inline" aria-label="Switch Temperature Unit">Switch to Fahrenheit</div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search news..." aria-label="Search news">
+            <button id="searchButton" aria-label="Search for news"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button id="clearSearch" aria-label="Clear search"><i class="fa-solid fa-x"></i></button>
+        </div>
+        
+        <button id="toggleSidebar" aria-label="Open Sidebar"><i class="fa-solid fa-circle-arrow-up"></i> Open</button>
+
+        <div class="sidebar">
+            <div class="mode-toggle">
+                <label class="switch" aria-label="switch">
+                    <input type="checkbox" id="toggleMode" aria-label="Toggle Dark and Light Mode">
+                    <span class="slider round">
+                        <i class="fa-regular fa-moon" id="icon-moon"></i>
+                        <i class="fa-regular fa-sun" id="icon-sun"></i>
+                    </span>
+                </label>
+            </div>
+            
+            <div class="language-toggle">
+                <button class="lang-button" aria-label="Switch to English">English</button>
+                <button class="lang-button" aria-label="Switch to Spanish">Spanish</button>
+                <button class="lang-button" aria-label="Clear Language Filter">Clear</button>
+            </div>
+
+            <p><i class="fa-brands fa-github"></i> Made by <a href="https://github.com/igordinuzzi" target="_blank">Igor</a></p>
+        </div>
+
+        <main>
+
+        <div class="news-tabs row">
+            <!-- Tabs will be generated dynamically -->
+        </div>
+        
+
+        <div id="newsContent" class="row">
+            <!-- News content will be injected here -->
+        </div>
+    </main>  
+    </div>
+    <script src="script/rssFeedLoader.js"></script>
+    <script src="script/sidebarToggle.js"></script>
+    <script src="script/weather.js"></script>
+    <script src="script/date-script.js"></script>
+    <script src="script/darkMode.js"></script>
+</body>
+</html>
