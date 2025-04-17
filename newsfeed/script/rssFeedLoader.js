@@ -31,6 +31,13 @@ const spanishSources = [
 
 
 // Function to fetch and display RSS feed
+/**
+ * Fetches an RSS feed from a specified URL and displays it in a container element.
+ *
+ * @param {string} rssUrl - The URL of the RSS feed to fetch.
+ * @param {string} containerId - The ID of the HTML element where the news items will be displayed.
+ * @throws {Error} If there is an error fetching the RSS feed, it will be logged to the console.
+ */
 function fetchRSSFeed(rssUrl, containerId) {
     fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl))
     .then(response => response.json())
@@ -42,6 +49,12 @@ function fetchRSSFeed(rssUrl, containerId) {
 }
 
 // Function to display news items
+/**
+ * Displays news items in a specified container.
+ *
+ * @param {Array} items - An array of news item objects to be displayed.
+ * @param {string} containerId - The ID of the HTML element where the news feed will be rendered.
+ */
 function displayNewsItems(items, containerId) {
     const newsFeedContainer = document.getElementById(containerId);
     newsFeedContainer.innerHTML = ''; // Clear previous content
@@ -89,6 +102,12 @@ function displayNewsItems(items, containerId) {
 
 
 // Function to share news
+/**
+ * Shares a news article on Twitter.
+ *
+ * @param {string} url - The URL of the news article to share.
+ * @throws {TypeError} If `url` is not a string.
+ */
 function shareNews(url) {
     window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, '_blank');
 }
@@ -99,6 +118,11 @@ function removeAccents(str) {
 }
 
 // Function to search news
+/**
+ * Searches for news items based on a user's input and updates the display accordingly.
+ *
+ * @function searchNews
+ */
 function searchNews() {
     const searchTerm = removeAccents(document.getElementById('searchInput').value.toLowerCase()); // Convert search term to lower case and remove accents
     const filteredNews = allNewsItems.filter(item => 
@@ -109,6 +133,15 @@ function searchNews() {
 }
 
 
+/**
+ * Generates tabs dynamically based on predefined news sources.
+ *
+ * This function creates tab buttons for each news source listed in the `newsSources` object.
+ * Each tab button, when clicked, triggers an action to fetch and display the corresponding RSS feed.
+ *
+ * @function
+ * @returns {void} - Does not return anything.
+ */
 function generateTabs() {
     const tabsContainer = document.querySelector('.news-tabs');
     Object.keys(newsSources).forEach(source => {
@@ -138,6 +171,11 @@ function generateTabs() {
 }
 
 // Function to filter news by language
+/**
+ * Filters tabs to display content based on the selected language.
+ *
+ * @param {string} language - The language code ('all', 'english', or 'spanish') to filter by.
+ */
 function filterLanguage(language) {
     const tabs = document.querySelectorAll('.tab-button');
     tabs.forEach(tab => {
